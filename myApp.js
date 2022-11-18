@@ -7,7 +7,11 @@ var publicPath = path.join(__dirname, "/public");
 app.use("/public", express.static(publicPath));
 
 app.get('/json', (req, res) => {
-    res.send({"message": "Hello json"});
+    if(process.env.MESSAGE_STYLE === "uppercase") {
+        res.send({"message": "HELLO JSON"});
+    } else {
+        res.send({"message": "Hello json"});
+    }
 })
 
 app.get('/', (req, res) => {
