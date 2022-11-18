@@ -11,9 +11,11 @@ app.use((req, res, next) => {
     next();
 })
 
-app.get('/now', (req, res) => {
+app.get('/now', (req, res, next) => {
     req.time = new Date().toString();
-    res.send({time: req.time})
+    next();
+}, (req, res) => {
+    res.send({time: req.time});
 })
 
 app.get('/json', (req, res) => {
