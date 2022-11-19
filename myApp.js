@@ -11,6 +11,12 @@ app.use((req, res, next) => {
     next();
 })
 
+app.get("/name", (req, res) => {
+    var firstName = req.query.first;
+    var lastName = req.query.last;
+    res.send({name: firstName + ' ' + lastName});
+})
+
 app.get('/now', (req, res, next) => {
     req.time = new Date().toString();
     next();
