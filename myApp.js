@@ -14,6 +14,12 @@ app.use((req, res, next) => {
     next();
 })
 
+app.post("/name", (req, res) => {
+    var firstName = req.body.first;
+    var lastName = req.body.last;
+    res.send({name: firstName + ' ' + lastName});
+})
+
 app.get("/name", (req, res) => {
     var firstName = req.query.first;
     var lastName = req.query.last;
